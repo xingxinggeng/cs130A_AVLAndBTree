@@ -38,10 +38,10 @@ using namespace std;
 					return true;
 			}
 			else if( x < t->word){
-					search( t->left,x);
+					return search( t->left,x);
 			}
 			else if(x > t->word){
-					search( t->right, x);
+					return search( t->right, x);
 			}
 	}
 
@@ -145,7 +145,7 @@ using namespace std;
 					if( (!t->left) && (!t->right) ){
 						avl_node *findMin;
 						findMin = t->right;
-						while(!findMin->left){
+						while(findMin->left){
 							findMin = findMin->left;
 						}
 						t->word  = findMin->word;
