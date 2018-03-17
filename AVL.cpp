@@ -134,10 +134,10 @@ using namespace std;
 		}
 		else{
 			if( x < t->word ){
-				remove( t->left, x);
+				return remove( t->left, x);
 			}
 			else if( x > t->word){
-				remove( t->right, x);
+				return remove( t->right, x);
 			}
 			else if( x == t->word){
 				t->counter -= 1;
@@ -151,7 +151,7 @@ using namespace std;
 						t->word  = findMin->word;
 						t->counter = findMin->counter;
 						findMin->counter = 1;
-						remove(t->right, findMin->word);
+						return remove(t->right, findMin->word);
 					}
 					else if( (t->left == NULL) || (t->right == NULL)){// t has one child or no child
 						avl_node * oldNode = t;
