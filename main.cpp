@@ -50,7 +50,7 @@ int main(){
     string path("hotels-small");
     vector <string> words;
     regex rgx("[a-z]+[a-z_'-]*");
-    
+    	AVL Btree;
 	/* all words ignore stopwords and non-alphabetical text*/
 	for (auto&p : fs::recursive_directory_iterator(path)){
         if(fs::is_regular_file(p)){
@@ -75,8 +75,8 @@ int main(){
 			avl.insert(words[i]);
 			BTree.insert(words[i]);
 	}
-/*	for (auto& i : words)
-		ht.insert(i);*/
+	for (auto& i : words)
+		Btree.insert(i);
     	while(true){
     	int testnum = getTest();
 
@@ -210,14 +210,14 @@ double timeSpent_BTree = ((double)t8) / CLOCKS_PER_SEC;
             cout<<"Enter two words to rangeSearch: "<<endl;
             std::string x,y;
             cin >> x >> y;
-
+            
             clock_t t9 = clock();
             avl.rangeSearch(x,y);
             t9 = clock()- t9;
             double timeSpent_avl = ((double)t9) / CLOCKS_PER_SEC;
 	    cout<<'\n';
             clock_t t10 = clock();
-            BTree.rangeSearch(x, y);
+            Btree.rangeSearch(y,x);
 	    t10 = clock()- t10;
             double timeSpent_ht = ((double)t10) / CLOCKS_PER_SEC;
             
